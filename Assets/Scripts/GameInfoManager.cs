@@ -8,6 +8,12 @@ public class GameInfoManager : MonoBehaviour {
 		get;
 		set;
 	}
+
+    public int life
+    {
+        get;
+        set;
+    }
 	public int needTutorial {
 		get;
 		set;
@@ -45,11 +51,13 @@ public class GameInfoManager : MonoBehaviour {
 		}
 	}
 
-	void SaveGameInfo(){
+	public void SaveGameInfo(){
 		PlayerPrefs.SetInt ("BestScore", bestScore);
+        PlayerPrefs.SetInt("Life", life);
 	}
 	void LoadGameInfo(){
 		bestScore = PlayerPrefs.GetInt ("BestScore", 0);
+        life = PlayerPrefs.GetInt("Life", 5);
 		needTutorial = 1;
 	}
 		

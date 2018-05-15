@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.Advertisements;
+//using UnityEngine.Advertisements;
 
 public class ResultPanel : MonoBehaviour {
 	public GameObject PauseButton;
@@ -22,7 +22,7 @@ public class ResultPanel : MonoBehaviour {
 		m_animator.SetTrigger ("Show");
 	}
 
-	public void ShowAd()
+	/*public void ShowAd()
 	{
 		Debug.Log ("ads initialized:" + Advertisement.isInitialized);
 		if (GameInfoManager.instance.adsCounter > AdsInverval) {
@@ -36,7 +36,7 @@ public class ResultPanel : MonoBehaviour {
 		} else {
 			GameInfoManager.instance.adsCounter++;
 		}
-	}
+	} */
 }
 
 
