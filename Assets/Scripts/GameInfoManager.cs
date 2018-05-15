@@ -57,7 +57,7 @@ public class GameInfoManager : MonoBehaviour {
 	}
 	void LoadGameInfo(){
 		bestScore = PlayerPrefs.GetInt ("BestScore", 0);
-        life = PlayerPrefs.GetInt("Life", 5);
+        life = PlayerPrefs.GetInt("Life", 2);
 		needTutorial = 1;
 	}
 		

@@ -144,7 +144,7 @@ PlayerSettings:
     Android: com.RoyGames.Lasers
     Standalone: unity.RoyGames.Lasers
     Tizen: com.RoyGames.Lasers
-    iOS: com.RoyGames.Lasers
+    iOS: com.pitaya.lasers
     tvOS: com.RoyGames.Lasers
   buildNumber:
     iOS: 0
