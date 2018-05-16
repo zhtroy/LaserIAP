@@ -1,18 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class GameInfoManager : MonoBehaviour {
 	public static GameInfoManager instance = null;
 
+	public event Action<int> onLifeChange = null;
 	public int bestScore {
 		get;
 		set;
 	}
 
+	private int _life;
     public int life
     {
-        get;
-        set;
+        get
+		{
+			return _life;
+		}
+        set {
+			if (_life != value) {
+				_life = value;
+				if (onLifeChange!=null) {
+					onLifeChange (_life);
+				}
+			}
+		}
     }
 	public int needTutorial {
 		get;

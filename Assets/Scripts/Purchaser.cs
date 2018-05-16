@@ -57,15 +57,15 @@ public class Purchaser : MonoBehaviour, IStoreListener
         // with its store-specific identifiers.
         builder.AddProduct(kProductIDConsumable, ProductType.Consumable);
         // Continue adding the non-consumable product.
-        builder.AddProduct(kProductIDNonConsumable, ProductType.NonConsumable);
-        // And finish adding the subscription product. Notice this uses store-specific IDs, illustrating
-        // if the Product ID was configured differently between Apple and Google stores. Also note that
-        // one uses the general kProductIDSubscription handle inside the game - the store-specific IDs 
-        // must only be referenced here. 
-        builder.AddProduct(kProductIDSubscription, ProductType.Subscription, new IDs(){
-                { kProductNameAppleSubscription, AppleAppStore.Name },
-                { kProductNameGooglePlaySubscription, GooglePlay.Name },
-            });
+//        builder.AddProduct(kProductIDNonConsumable, ProductType.NonConsumable);
+//        // And finish adding the subscription product. Notice this uses store-specific IDs, illustrating
+//        // if the Product ID was configured differently between Apple and Google stores. Also note that
+//        // one uses the general kProductIDSubscription handle inside the game - the store-specific IDs 
+//        // must only be referenced here. 
+//        builder.AddProduct(kProductIDSubscription, ProductType.Subscription, new IDs(){
+//                { kProductNameAppleSubscription, AppleAppStore.Name },
+//                { kProductNameGooglePlaySubscription, GooglePlay.Name },
+//            });
 
         // Kick off the remainder of the set-up with an asynchrounous call, passing the configuration 
         // and this class' instance. Expect a response either in OnInitialized or OnInitializeFailed.
@@ -93,6 +93,7 @@ public class Purchaser : MonoBehaviour, IStoreListener
         // Buy the non-consumable product using its general identifier. Expect a response either 
         // through ProcessPurchase or OnPurchaseFailed asynchronously.
         BuyProductID(kProductIDNonConsumable);
+
     }
 
 
@@ -103,6 +104,7 @@ public class Purchaser : MonoBehaviour, IStoreListener
         // Notice how we use the general product identifier in spite of this ID being mapped to
         // custom store-specific identifiers above.
         BuyProductID(kProductIDSubscription);
+
     }
 
 
@@ -122,6 +124,7 @@ public class Purchaser : MonoBehaviour, IStoreListener
                 // ... buy the product. Expect a response either through ProcessPurchase or OnPurchaseFailed 
                 // asynchronously.
                 m_StoreController.InitiatePurchase(product);
+				Debug.Log ("begin to purchase");
             }
             // Otherwise ...
             else

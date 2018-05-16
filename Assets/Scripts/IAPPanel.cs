@@ -9,6 +9,7 @@ public class IAPPanel : MonoBehaviour {
 
     public void Hide()
     {
+		
         ani.SetTrigger("hide");
     }
     public void Show()
