@@ -229,7 +229,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: /Users/roy/Documents/UnityProject/Android_Keystores/Lasers.keystore
+  AndroidKeystoreName: C:/Users/zhtro/zhanghaotian/Github/Lasers/builds/android/user.keystore
   AndroidKeyaliasName: lasers
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
