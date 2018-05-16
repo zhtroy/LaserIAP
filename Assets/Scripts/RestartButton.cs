@@ -5,6 +5,7 @@ using UnityEngine;
 public class RestartButton : MonoBehaviour {
     public TransitionOut transToSelf;
     public IAPPanel panelIAP;
+    public HeartButton heart;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,7 +20,7 @@ public class RestartButton : MonoBehaviour {
         }
         else
         {
-            panelIAP.Show();
+            heart.Shake();
         }
     }
 }

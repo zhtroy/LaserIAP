@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class IAPPanel : MonoBehaviour {
 
-    public Animator ani;
+    private Animator ani;
 
-
+    private void Awake()
+    {
+        ani = GetComponent<Animator>();
+    }
     public void Hide()
     {
 		

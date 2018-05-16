@@ -7,6 +7,9 @@ public class StartButton : MonoBehaviour {
 	public Image Outer;
 
 	public Color[] Colors;
+
+    public TransitionOut tranout;
+    public HeartButton heart;
 	private int m_lastIdx = 0;
 
 	void Start(){
@@ -27,4 +30,17 @@ public class StartButton : MonoBehaviour {
 		Outer.color = color;
 
 	}
+
+    public void OnClick()
+    {
+        if (GameInfoManager.instance.life>0)
+        {
+            GameInfoManager.instance.life--;
+            tranout.gameObject.SetActive(true);
+        }
+        else
+        {
+            heart.Shake();
+        }
+    }
 }

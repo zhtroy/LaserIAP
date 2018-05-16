@@ -214,7 +214,7 @@ public class Purchaser : MonoBehaviour, IStoreListener
             // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
             GameInfoManager.instance.life += 5;
             GameInfoManager.instance.SaveGameInfo();
-            panelIAP.Hide();
+  
 
         }
         // Or ... a non-consumable product has been purchased by this user.
