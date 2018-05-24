@@ -22,6 +22,8 @@ public class Purchaser : MonoBehaviour, IStoreListener
     // kProductIDSubscription - it has custom Apple and Google identifiers. We declare their store-
     // specific mapping to Unity Purchasing's AddProduct, below.
     public static string kProductIDConsumable = "com.pitaya.lasers.5life";
+    public static string kProductIDConsumable100 = "com.pitaya.lasers.100life";
+    public static string kProductIDConsumable500 = "com.pitaya.lasers.500life";
     public static string kProductIDNonConsumable = "nonconsumable";
     public static string kProductIDSubscription = "subscription";
 
@@ -56,16 +58,20 @@ public class Purchaser : MonoBehaviour, IStoreListener
         // Add a product to sell / restore by way of its identifier, associating the general identifier
         // with its store-specific identifiers.
         builder.AddProduct(kProductIDConsumable, ProductType.Consumable);
+        builder.AddProduct(kProductIDConsumable100, ProductType.Consumable);
+        builder.AddProduct(kProductIDConsumable500, ProductType.Consumable);
+        
+
         // Continue adding the non-consumable product.
-//        builder.AddProduct(kProductIDNonConsumable, ProductType.NonConsumable);
-//        // And finish adding the subscription product. Notice this uses store-specific IDs, illustrating
-//        // if the Product ID was configured differently between Apple and Google stores. Also note that
-//        // one uses the general kProductIDSubscription handle inside the game - the store-specific IDs 
-//        // must only be referenced here. 
-//        builder.AddProduct(kProductIDSubscription, ProductType.Subscription, new IDs(){
-//                { kProductNameAppleSubscription, AppleAppStore.Name },
-//                { kProductNameGooglePlaySubscription, GooglePlay.Name },
-//            });
+        //        builder.AddProduct(kProductIDNonConsumable, ProductType.NonConsumable);
+        //        // And finish adding the subscription product. Notice this uses store-specific IDs, illustrating
+        //        // if the Product ID was configured differently between Apple and Google stores. Also note that
+        //        // one uses the general kProductIDSubscription handle inside the game - the store-specific IDs 
+        //        // must only be referenced here. 
+        //        builder.AddProduct(kProductIDSubscription, ProductType.Subscription, new IDs(){
+        //                { kProductNameAppleSubscription, AppleAppStore.Name },
+        //                { kProductNameGooglePlaySubscription, GooglePlay.Name },
+        //            });
 
         // Kick off the remainder of the set-up with an asynchrounous call, passing the configuration 
         // and this class' instance. Expect a response either in OnInitialized or OnInitializeFailed.
@@ -87,6 +93,15 @@ public class Purchaser : MonoBehaviour, IStoreListener
         BuyProductID(kProductIDConsumable);
     }
 
+    public void BuyConsumable100()
+    {
+        BuyProductID(kProductIDConsumable100);
+    }
+
+    public void BuyConsumable500()
+    {
+        BuyProductID(kProductIDConsumable500);
+    }
 
     public void BuyNonConsumable()
     {
@@ -215,6 +230,24 @@ public class Purchaser : MonoBehaviour, IStoreListener
             GameInfoManager.instance.life += 5;
             GameInfoManager.instance.SaveGameInfo();
   
+
+        }
+        else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable100, StringComparison.Ordinal))
+        {
+            Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+            // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+            GameInfoManager.instance.life += 100;
+            GameInfoManager.instance.SaveGameInfo();
+
+
+        }
+        else if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable500, StringComparison.Ordinal))
+        {
+            Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+            // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+            GameInfoManager.instance.life += 500;
+            GameInfoManager.instance.SaveGameInfo();
+
 
         }
         // Or ... a non-consumable product has been purchased by this user.
